@@ -10,6 +10,7 @@ import 'babel-polyfill';
 /*
   Import Components
 */
+import Main from './components/Main';
 import App from './components/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
@@ -35,15 +36,7 @@ import store, { history } from './store';
   This is where we hook up the Store with our actual component and the router
 */
 render(
-  <Provider store={store}>
-    { /* Tell the Router to use our enhanced history */ }
-    <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute component={PhotoGrid} />
-        <Route path="/view/:postId" component={Single}></Route>
-      </Route>
-    </Router>
-  </Provider>,
+  <Main />,
   document.getElementById('root')
 );
 

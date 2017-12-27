@@ -36,7 +36,7 @@ import store, { history } from './store';
   This is where we hook up the Store with our actual component and the router
 */
 render(
-  <Main />,
+  <Main></Main>,
   document.getElementById('root')
 );
 

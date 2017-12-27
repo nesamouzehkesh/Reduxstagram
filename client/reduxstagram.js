@@ -4,7 +4,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import 'babel-polyfill';
 
 /*
@@ -31,12 +31,22 @@ import store, { history } from './store';
 //   Raven.config(sentry_url).install();
 // }
 
+/**
+ * router returns Main with either Single or PhotoGrid
+ */
+const router = (
+  <Router history={browserHistory}>
+    <Route path="/" component={Main}>
+      <IndexRoute component={PhotoGrid}></IndexRoute>
+      <Route path="/view/:postId" component={Single}></Route>
+    </Route>
+  </Router>
+)
+
+
 /*
   Rendering
   This is where we hook up the Store with our actual component and the router
 */
-render(
-  <Main></Main>,
-  document.getElementById('root')
-);
+render(router, document.getElementById('root'));
 

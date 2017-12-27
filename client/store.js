@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore } from 'react-router-redux'; //this hooks up react router with redux
 import { browserHistory } from 'react-router'
 import rootReducer from './reducers/index';
 import comments from './data/comments';
@@ -13,18 +13,17 @@ import posts from './data/posts';
   2. An optional starting state - similar to React's getInitialState
 */
 
+// create an object for the default data
 const defaultState = {
   posts,
   comments
 };
 
-const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-);
+const store = createStore(rootReducer, defaultState);
 
-const store = createStore(rootReducer, defaultState, enhancers);
 
 // we export history because we need it in `reduxstagram.js` to feed into <Router>
+// syncHistoryWithStore is a function from react-router-redux that syncs the browser history with redux' store.
 export const history = syncHistoryWithStore(browserHistory, store);
 
 /*

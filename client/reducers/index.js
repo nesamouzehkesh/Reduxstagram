@@ -15,6 +15,10 @@ import posts from './posts';
 import comments from './comments';
 
 // Combine all our reducers togeher
+/**
+ * the parameters are the reducers and also the changes in URLs, that is why `routing` should
+ * also be passed as a parameter cuz that one should also be logged in our redux as well
+ */
 const rootReducer = combineReducers({ posts, comments, routing: routerReducer });
 
 export default rootReducer;

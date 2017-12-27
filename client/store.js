@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux'; //this hooks up react router with redux
 import { browserHistory } from 'react-router'
-import rootReducer from './reducers/index';
+import rootReducer from './reducers/index'; //where all your reducers are combined inside one file
 import comments from './data/comments';
 import posts from './data/posts';
 
@@ -14,6 +14,7 @@ import posts from './data/posts';
 */
 
 // create an object for the default data
+//we need to create a reducer for each of these states
 const defaultState = {
   posts,
   comments

@@ -3,7 +3,7 @@
 */
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; //the binding that allows us to use redux with react
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import 'babel-polyfill';
 
@@ -34,13 +34,18 @@ import store, { history } from './store';
 /**
  * router returns Main with either Single or PhotoGrid
  */
+/**
+ * Provider exposes our store to our application
+ */
 const router = (
-  <Router history={browserHistory}>
-    <Route path="/" component={Main}>
-      <IndexRoute component={PhotoGrid}></IndexRoute>
-      <Route path="/view/:postId" component={Single}></Route>
-    </Route>
-  </Router>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path="/" component={Main}>
+        <IndexRoute component={PhotoGrid}></IndexRoute>
+        <Route path="/view/:postId" component={Single}></Route>
+      </Route>
+    </Router>
+  </Provider>
 )
 
 
@@ -48,5 +53,9 @@ const router = (
   Rendering
   This is where we hook up the Store with our actual component and the router
 */
+/**
+ * the render function is called any time the store state changes because the store is
+ * subscribed to `render` function (I think inside the `createStore` implementation)
+ */
 render(router, document.getElementById('root'));
 

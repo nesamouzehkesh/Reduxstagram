@@ -19,6 +19,12 @@ import comments from './comments';
  * the parameters are the reducers and also the changes in URLs, that is why `routing` should
  * also be passed as a parameter cuz that one should also be logged in our redux as well
  */
+
+/**
+ * Another point about reducers is that:
+ * Every time an action is dispatched in your application `EVERY` single reducer is going
+ * to run.
+ */
 const rootReducer = combineReducers({ posts, comments, routing: routerReducer });
 
 export default rootReducer;

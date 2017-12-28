@@ -23,6 +23,7 @@ export default Main;
  *
  *  React.cloneElement(this.props.children. this.props)
  *
- *  the `this.props` will take any props that are coming down from the parent component and pass them
- *  down to either the Single or PhotoGrid component.
+ *  with `this.props` later when we `connect` our `Main` element to the state and action creators in
+ *  `App.js` we actually make them all available to both `Single` or `PhotoGrid` child components of
+ *  Main. Main actually passes down its props to Single and PhotoGrid this way.
  */

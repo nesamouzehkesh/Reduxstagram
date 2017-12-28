@@ -17,7 +17,7 @@ import Main from './Main';
 
   We need a way to make
   1. our state (our data)
-  2. our 'dispatch' functions 
+  2. our 'dispatch' functions
   available to the <Main /> component.
 
   We will surface state and functions via props (this.props.whatever)
@@ -51,9 +51,12 @@ export function mapDispatchToProps(dispatch) {
   Here we create an <App/> component which is just our <Main/> component with it's props
   populated with our actions and our state
 
-  We're injecting the data at the top level and passing it down, but you can connect() any component to make the actions and the store available to you. 
+  We're injecting the data at the top level and passing it down, but you can connect()
+  any component to make the actions and the store available to you. So this line essentially
+  takes the `Main` component which is a simple `div` and gives it all the actions and states as
+  props.
 */
- 
+
 var App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;

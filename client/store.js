@@ -23,8 +23,15 @@ const defaultState = {
 const store = createStore(rootReducer, defaultState);
 
 
-// we export history because we need it in `reduxstagram.js` to feed into <Router>
-// syncHistoryWithStore is a function from react-router-redux that syncs the browser history with redux' store.
+/**
+ * we export history because we need it in `reduxstagram.js` to feed into <Router>
+ * syncHistoryWithStore is a function from react-router-redux that syncs the browser history with redux' store.
+ *
+ * plus: This library is not necessary for using Redux together with React Router.
+ * You can use the two together just fine without any additional libraries.
+ * It is useful if you care about recording, persisting, and replaying user actions,
+ * using time travel. If you don't care about these features, just use Redux and React Router directly.
+ */
 export const history = syncHistoryWithStore(browserHistory, store);
 
 /*
